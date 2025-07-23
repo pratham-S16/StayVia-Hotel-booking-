@@ -20,7 +20,7 @@ const registerHotel = async (req, res) => {
             city,
             owner
         });
-        await User.findById(owner, { role: "hotelOwner" });
+        await User.findByIdAndUpdate(owner, { role: "hotelOwner" });
         res.json({ success: true, message: "Hotel registered successfully" });
     
     } catch (error) {

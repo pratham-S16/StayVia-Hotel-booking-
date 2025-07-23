@@ -21,17 +21,15 @@ import toast from 'react-hot-toast';
         if(data.success)
         {
             toast.success(data.message);
-            console.log(data.message);
             setIsOwner(true);
             setShowHotelReg(false);
         }
         else{
             toast.error(data.message);
-            console.log("elseblock");
+           
         }
      } catch (error) {
          toast.error(error.message);
-         console.log("catchblock");
      }
     }
 

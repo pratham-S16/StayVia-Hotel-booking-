@@ -20,8 +20,8 @@ const clerkWebhooks=async(req,res)=>{
             username: data.first_name + " " + data.last_name,
             email: data.email_addresses[0].email_address,
             image: data.image_url,
-            role: "user",
-            recentSearchedCities: [],
+            // role: "user",
+            // recentSearchedCities: [],
         }
 
         // console.log(userData); //checking data coming from 
