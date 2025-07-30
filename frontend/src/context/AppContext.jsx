@@ -21,7 +21,7 @@ export const AppProvider= ({ children }) => {
 
     const fetchUser= async () => {
         try {
-            const {data}= await axios.get("/api/user", {headers:{Authorization: `Bearer ${await getToken()}`}});
+            const {data}= await axios.get("https://stay-via-hotel-booking-backend.vercel.app/api/user", {headers:{Authorization: `Bearer ${await getToken()}`}});
             if(data.success){
                 setIsOwner(data.role==="hotelOwner");
                 setSearchedCities(data.recentSearchedCities)

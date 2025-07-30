@@ -24,7 +24,7 @@ const clerkWebhooks=async(req,res)=>{
             // recentSearchedCities: [],
         }
 
-        // console.log(userData); //checking data coming from 
+        console.log(userData); //checking data coming from 
 
         switch (type) {
             case "user.created":{
