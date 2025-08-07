@@ -14,12 +14,10 @@ const clerkWebhooks = async (req, res) => {
     await whook.verify(JSON.stringify(req.body), headers);
 
     const { data, type } = req.body;
+    console.log("ckecking type: ", type);
+    
 
-    console.log(userData); //checking data coming from
-
-    switch (type) {
-      case "user.created": {
-        const userData = {
+     const userData = {
           _id: data.id,
           username: data.first_name + " " + data.last_name,
           email: data.email_addresses[0].email_address,
@@ -27,19 +25,32 @@ const clerkWebhooks = async (req, res) => {
           // role: "user",
           // recentSearchedCities: [],
         };
+
+    console.log("logging userdata",userData); //checking data coming from
+
+    switch (type) {
+      case "user.created": {
+      //   const userData = {
+      //     _id: data.id,
+      //     username: data.first_name + " " + data.last_name,
+      //     email: data.email_addresses[0].email_address,
+      //     image: data.image_url,
+      //     // role: "user",
+      //     // recentSearchedCities: [],
+      //   };
         await User.create(userData);
         break;
       }
 
       case "user.updated": {
-        const userData = {
-          _id: data.id,
-          username: data.first_name + " " + data.last_name,
-          email: data.email_addresses[0].email_address,
-          image: data.image_url,
-          // role: "user",
-          // recentSearchedCities: [],
-        };
+        // const userData = {
+        //   _id: data.id,
+        //   username: data.first_name + " " + data.last_name,
+        //   email: data.email_addresses[0].email_address,
+        //   image: data.image_url,
+        //   // role: "user",
+        //   // recentSearchedCities: [],
+        // };
 
         await User.findByIdAndUpdate(data.id, userData);
         break;
@@ -56,7 +67,7 @@ const clerkWebhooks = async (req, res) => {
     res.json({ success: true, message: "Webhook Received" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: true, message: "Webhook Received" });
+    res.json({ success: false, message: error.message });
   }
 };
 
