@@ -6,7 +6,7 @@ const registerHotel = async (req, res) => {
     try {
 
         const { name,address, contact, city } = req.body;
-        console.log("req.user:", req.user);
+        // console.log("req.user:", req.user);
         const owner= req.user._id; //req.user_id
         
         const hotel=await Hotel.findOne({owner});
@@ -24,8 +24,8 @@ const registerHotel = async (req, res) => {
         res.json({ success: true, message: "Hotel registered successfully" });
     
     } catch (error) {
-        console.log(error.message);
-        return res.json({ success: false, message: "Something went wrong" });
+        // console.log(error.message);
+        return res.json({ success: false, message: error.message });
         
     }
 

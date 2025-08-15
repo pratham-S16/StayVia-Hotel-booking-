@@ -77,9 +77,10 @@ const Navbar = () => {
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-4 lg:gap-8">
         {navLinks.map((link, i) => (
-          <a
+          <Link
             key={i}
-            href={link.path}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            to={link.path}
             className={`group flex  flex-col gap-0.5 ${
               isScrolled ? "text-white" : "text-blue"
             }`}
@@ -90,7 +91,7 @@ const Navbar = () => {
                 isScrolled ? "bg-white" : "bg-white"
               } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
             />
-          </a>
+          </Link>
         ))}
         {
           user && (

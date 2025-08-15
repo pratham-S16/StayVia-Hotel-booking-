@@ -19,7 +19,7 @@ const Dashboard = () => {
       const { data } = await axios.get('/api/bookings/hotel', {
         headers: { Authorization: `Bearer ${await getToken()}` },
       });
-      console.log("Fetched Dashboard Data:", data);
+      // console.log("Fetched Dashboard Data:", data);
       
       if (data.success) {
         setDashboardData(data.dashboardData);
@@ -94,7 +94,7 @@ const Dashboard = () => {
             {dashboardData.bookings.map((item, index) => (
               <tr key={index}>
                 <td className="py-3 px-4 text-gray-700 border-t border-gray-300">
-                  {item.user.username}
+                  {item.user?.username || "Unknown User"}
                 </td>
                 <td className="py-3 px-4 text-gray-700 border-t border-gray-300 max-sm:hidden">
                   {item.room.roomType}
