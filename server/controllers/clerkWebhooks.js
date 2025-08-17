@@ -14,7 +14,7 @@ const clerkWebhooks = async (req, res) => {
     await whook.verify(JSON.stringify(req.body), headers);
 
     const { data, type } = req.body;
-    console.log("ckecking type: ", type);
+    // console.log("ckecking type: ", type);
     
 
      const userData = {
@@ -66,7 +66,7 @@ const clerkWebhooks = async (req, res) => {
     }
     res.json({ success: true, message: "Webhook Received" });
   } catch (error) {
-    console.log(error.message);
+    console.log("catch block r=erooro",error.message);
     res.json({ success: false, message: error.message });
   }
 };

@@ -20,7 +20,7 @@ const FeatureDestination = () => {
     </div> */}
       
       <div className="flex items-center justify-center flex-wrap gap-6  mt-18">
-        {rooms.slice(0, 4).map((room, index) => {
+        {rooms?.slice(0, 4).map((room, index) => {
           return <HotelCard key={room._id} room={room} index={index} />;
         })}
       </div>

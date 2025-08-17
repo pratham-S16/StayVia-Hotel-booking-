@@ -26,7 +26,7 @@ export const AppProvider= ({ children }) => {
             const {data} =await axios.get("/api/room/getroom" ,{headers: {Authorization: `Bearer ${await getToken()}`}});
             if(data.success){
                 setRooms(data.rooms);
-                console.log("Rooms fetched:", rooms);
+                // console.log("Rooms fetched:", rooms);
         
             }else{
                 toast.error(data.message);
