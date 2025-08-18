@@ -12,7 +12,7 @@ import bookingRouter from './routes/bookingRoutes.js';
 import bodyParser from 'body-parser';
 
 
-connectDB();
+await connectDB();
 connectCloudinary();
 
 const app=express();
