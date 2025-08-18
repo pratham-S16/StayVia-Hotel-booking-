@@ -22,7 +22,7 @@ export const AppProvider= ({ children }) => {
 
     const fetchRooms= async()=>{
         try {
-             if (rooms.length > 0) return; // ✅ already fetched
+             
             const {data} =await axios.get("/api/room/getroom" ,{headers: {Authorization: `Bearer ${await getToken()}`}});
             if(data.success){
                 setRooms(data.rooms);
@@ -59,7 +59,7 @@ export const AppProvider= ({ children }) => {
      useEffect(() => {
         fetchRooms();
         
-    },[]);
+    },[user]);
 
 
     const value={
@@ -75,6 +75,7 @@ export const AppProvider= ({ children }) => {
         searchedCities,
         setSearchedCities,rooms,
         setRooms,
+        fetchRooms,
 
     }
 

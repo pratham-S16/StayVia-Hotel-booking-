@@ -23,7 +23,7 @@ const Dashboard = () => {
       
       if (data.success) {
         setDashboardData(data.dashboardData);
-        console.log("Dashboard Data:", data.dashboardData);
+        // console.log("Dashboard Data:", data.dashboardData);
         
       } else {
         toast.error(data.message || "Failed to fetch dashboard data");

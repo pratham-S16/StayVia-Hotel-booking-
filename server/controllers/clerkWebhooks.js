@@ -19,12 +19,13 @@ const clerkWebhooks = async (req, res) => {
 
      const userData = {
           _id: data.id,
-          username: data.first_name + " " + data.last_name,
+          username: [data.first_name, data.last_name].filter(Boolean).join(" ") || "No Name", 
           email: data.email_addresses[0].email_address,
           image: data.image_url,
           // role: "user",
           // recentSearchedCities: [],
         };
+        // data.first_name + " " + data.last_name , username prior
 
     console.log("logging userdata",userData); //checking data coming from
 
