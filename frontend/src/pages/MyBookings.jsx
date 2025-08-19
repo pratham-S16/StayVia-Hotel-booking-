@@ -12,7 +12,7 @@ const MyBookings = () => {
   const fetchUserBookings = async () => {
     try {
       const {data}=await axios.get('/api/bookings/user', {headers: {Authorization: `Bearer ${await getToken()}`}});
-      console.log("User Bookings:", data);
+      // console.log("User Bookings:", data);
       
       if(data.success){
         setBookings(data.bookings);
@@ -29,6 +29,22 @@ const MyBookings = () => {
     if(user)
       fetchUserBookings();
   },[user])
+
+
+  const handlePayment = async (bookingId) => {
+    try {
+      const {data} = await axios.post('/api/bookings/stripe-payment', {bookingId}, {headers: {Authorization: `Bearer ${await getToken()}`}});
+      if(data.success){
+        window.location.href= data.url;
+      }else{
+        toast.error("Payment failed:", data.message);
+      }
+    } catch (error) {
+      toast.error("Error processing payment:", error.message);
+    }
+  }
+
+
   return (
     <div className="py-28 md:pb-35 md:pt-32 px-4 md:px-16 lg:px-24 xl:px-32">
       <Title
@@ -90,7 +106,8 @@ const MyBookings = () => {
                 </div>
                 <p className={`${booking.isPaid ? 'text-green-500' : 'text-red-500'}`}>{booking.isPaid? 'Paid' :"Unpaid"} </p>
               </div>
-             {!booking.isPaid && (<button className="px-4 py-1.5 mt-4 text-xs  border border-gray-400 rounded-full hover:bg-gray-50 transition-all cursor-pointer">Pay Now</button>)}
+             {!booking.isPaid &&
+             (<button onClick={()=>handlePayment(booking._id)} className="px-4 py-1.5 mt-4 text-xs  border border-gray-400 rounded-full hover:bg-gray-50 transition-all cursor-pointer">Pay Now</button>)}
             </div>
           </div>
         ))}
