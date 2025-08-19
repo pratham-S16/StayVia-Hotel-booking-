@@ -15,11 +15,11 @@ export const stripeWebhook = async (req, res) => {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (error) {
-    response.status(400).send(`Webhook Error: ${error.message}`);
+    res.status(400).send(`Webhook Error: ${error.message}`);
   }
 
   // Handle the event
-  if (event.type === "payment intent.succeeded") {
+  if (event.type === "payment_intent.succeeded") {
     const paymentIntent = event.data.object;
     const paymentIntentId = paymentIntent.id;
 
