@@ -35,6 +35,13 @@ app.use(
 );
 
 app.get('/', (req,res)=>res.send("API is running ...")); 
+app.get("/health", (req, res) => {
+  res.json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: Date.now(),
+  });
+});
 app.use('/api/user',userRouter);
 app.use('/api/hotel', hotelRouter);
 app.use('/api/room', roomRouter);
