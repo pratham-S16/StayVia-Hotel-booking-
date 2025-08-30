@@ -10,7 +10,7 @@ export const protect= async(req,res,next)=>{
     // console.log(userId);
     
     if(!userId){
-        res.json({success:false, message: "Not Authorized"});
+        res.json({success:false, message: "Login to proceed"});
     }
     else{
         const user =await User.findById(userId);
