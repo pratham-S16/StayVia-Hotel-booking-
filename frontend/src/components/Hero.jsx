@@ -13,7 +13,7 @@ function Hero() {
          Your next unforgettable Escape awaits.
         </h1>
         <p className="max-w-130 mt-2 text-sm  md:text-base">
-          Start your Unimmaginable journey of Luxury and Comfort at world's most
+          Start your Unimmaginable journey of Luxury and Comfort at India's most
           exotic hotels and resorts.
         </p>
         <Search />
