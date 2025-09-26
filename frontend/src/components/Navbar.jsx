@@ -150,7 +150,7 @@ const Navbar = () => {
                 label="MyBookings"
                 labelIcon={<BookIcon />}
                 onClick={() => {
-                  navigate("/");
+                  navigate("/my-bookings");
                 }}
               />
             </UserButton.MenuItems>
